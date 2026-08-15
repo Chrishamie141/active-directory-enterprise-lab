@@ -4,6 +4,8 @@ A portfolio-ready Windows Server lab that demonstrates Active Directory design, 
 
 **Live repository:** [github.com/Chrishamie141/active-directory-enterprise-lab](https://github.com/Chrishamie141/active-directory-enterprise-lab)
 
+**Project announcement:** [View the LinkedIn post](https://www.linkedin.com/feed/update/urn:li:share:7494541719796068352/)
+
 > This project is designed for an isolated lab domain. Do not run it against a production or employer-managed directory.
 
 ## What this project demonstrates
