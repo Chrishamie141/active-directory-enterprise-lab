@@ -1,0 +1,47 @@
+{
+  "ProjectName": "Northstar Financial Active Directory Lab",
+  "DomainDnsName": "ad.northstar.test",
+  "DomainNetBIOSName": "NORTHSTAR",
+  "RootOUName": "Northstar",
+  "OrganizationalUnits": [
+    { "Key": "root", "Name": "Northstar", "ParentKey": "domain", "Description": "Northstar managed objects" },
+    { "Key": "admins", "Name": "Admins", "ParentKey": "root", "Description": "Privileged administrative accounts" },
+    { "Key": "groups", "Name": "Groups", "ParentKey": "root", "Description": "Role and resource access groups" },
+    { "Key": "servers", "Name": "Servers", "ParentKey": "root", "Description": "Member servers" },
+    { "Key": "workstations", "Name": "Workstations", "ParentKey": "root", "Description": "Domain-joined client computers" },
+    { "Key": "users", "Name": "Users", "ParentKey": "root", "Description": "Standard user accounts" },
+    { "Key": "finance", "Name": "Finance", "ParentKey": "users", "Description": "Finance department users" },
+    { "Key": "hr", "Name": "Human Resources", "ParentKey": "users", "Description": "Human Resources department users" },
+    { "Key": "it", "Name": "Information Technology", "ParentKey": "users", "Description": "Information Technology department users" }
+  ],
+  "Groups": [
+    { "Name": "GG_Finance_Users", "Scope": "Global", "Category": "Security", "OUKey": "groups", "Description": "Finance role membership" },
+    { "Name": "GG_HR_Users", "Scope": "Global", "Category": "Security", "OUKey": "groups", "Description": "Human Resources role membership" },
+    { "Name": "GG_IT_Users", "Scope": "Global", "Category": "Security", "OUKey": "groups", "Description": "Information Technology role membership" },
+    { "Name": "DL_Finance_Share_RW", "Scope": "DomainLocal", "Category": "Security", "OUKey": "groups", "Description": "Modify access to the Finance file share" },
+    { "Name": "DL_HR_Share_RW", "Scope": "DomainLocal", "Category": "Security", "OUKey": "groups", "Description": "Modify access to the HR file share" },
+    { "Name": "DL_Helpdesk_ResetPassword", "Scope": "DomainLocal", "Category": "Security", "OUKey": "groups", "Description": "Delegated password reset role" }
+  ],
+  "GroupNesting": [
+    { "Member": "GG_Finance_Users", "Target": "DL_Finance_Share_RW" },
+    { "Member": "GG_HR_Users", "Target": "DL_HR_Share_RW" },
+    { "Member": "GG_IT_Users", "Target": "DL_Helpdesk_ResetPassword" }
+  ],
+  "Users": [
+    { "SamAccountName": "amorgan", "GivenName": "Avery", "Surname": "Morgan", "Department": "Finance", "Title": "Financial Analyst", "OUKey": "finance", "Groups": ["GG_Finance_Users"] },
+    { "SamAccountName": "jpatel", "GivenName": "Jordan", "Surname": "Patel", "Department": "Finance", "Title": "Senior Accountant", "OUKey": "finance", "Groups": ["GG_Finance_Users"] },
+    { "SamAccountName": "rlee", "GivenName": "Riley", "Surname": "Lee", "Department": "Human Resources", "Title": "HR Specialist", "OUKey": "hr", "Groups": ["GG_HR_Users"] },
+    { "SamAccountName": "tnguyen", "GivenName": "Taylor", "Surname": "Nguyen", "Department": "Human Resources", "Title": "Recruiter", "OUKey": "hr", "Groups": ["GG_HR_Users"] },
+    { "SamAccountName": "cjohnson", "GivenName": "Casey", "Surname": "Johnson", "Department": "Information Technology", "Title": "Systems Administrator", "OUKey": "it", "Groups": ["GG_IT_Users"] },
+    { "SamAccountName": "srivera", "GivenName": "Skyler", "Surname": "Rivera", "Department": "Information Technology", "Title": "Help Desk Technician", "OUKey": "it", "Groups": ["GG_IT_Users"] }
+  ],
+  "Gpo": {
+    "Name": "Northstar - Workstation Security Baseline",
+    "Settings": [
+      { "Key": "HKLM\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System", "ValueName": "InactivityTimeoutSecs", "Type": "DWord", "Value": 900 },
+      { "Key": "HKLM\\Software\\Policies\\Microsoft\\Windows Defender", "ValueName": "DisableAntiSpyware", "Type": "DWord", "Value": 0 },
+      { "Key": "HKLM\\Software\\Policies\\Microsoft\\Windows\\PowerShell\\ScriptBlockLogging", "ValueName": "EnableScriptBlockLogging", "Type": "DWord", "Value": 1 }
+    ]
+  }
+}
+

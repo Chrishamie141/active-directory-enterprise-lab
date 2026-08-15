@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<style>
+body { font-family: Segoe UI, Arial, sans-serif; margin: 36px; color: #172033; }
+h1 { color: #12355b; } .summary { padding: 12px; background: #eef4fa; border-left: 5px solid #2b6cb0; }
+table { border-collapse: collapse; width: 100%; margin-top: 20px; } th { background: #12355b; color: white; }
+th, td { border: 1px solid #d9e2ec; padding: 8px; text-align: left; } tr:nth-child(even) { background: #f7fafc; }
+</style>
+</head><body>
+<h1>Northstar Financial Active Directory Lab Validation</h1><div class='summary'><strong>32 passed</strong> &nbsp; | &nbsp; <strong>0 failed</strong><br>Generated 2026-08-15 12:45:20</div>
+<table>
+<colgroup><col/><col/><col/><col/></colgroup>
+<tr><th>Category</th><th>Check</th><th>Status</th><th>Detail</th></tr>
+<tr><td>Organizational Unit</td><td>Northstar</td><td>PASS</td><td>OU=Northstar,DC=ad,DC=northstar,DC=test</td></tr>
+<tr><td>Organizational Unit</td><td>Admins</td><td>PASS</td><td>OU=Admins,OU=Northstar,DC=ad,DC=northstar,DC=test</td></tr>
+<tr><td>Organizational Unit</td><td>Groups</td><td>PASS</td><td>OU=Groups,OU=Northstar,DC=ad,DC=northstar,DC=test</td></tr>
+<tr><td>Organizational Unit</td><td>Servers</td><td>PASS</td><td>OU=Servers,OU=Northstar,DC=ad,DC=northstar,DC=test</td></tr>
+<tr><td>Organizational Unit</td><td>Workstations</td><td>PASS</td><td>OU=Workstations,OU=Northstar,DC=ad,DC=northstar,DC=test</td></tr>
+<tr><td>Organizational Unit</td><td>Users</td><td>PASS</td><td>OU=Users,OU=Northstar,DC=ad,DC=northstar,DC=test</td></tr>
+<tr><td>Organizational Unit</td><td>Finance</td><td>PASS</td><td>OU=Finance,OU=Users,OU=Northstar,DC=ad,DC=northstar,DC=test</td></tr>
+<tr><td>Organizational Unit</td><td>Human Resources</td><td>PASS</td><td>OU=Human Resources,OU=Users,OU=Northstar,DC=ad,DC=northstar,DC=test</td></tr>
+<tr><td>Organizational Unit</td><td>Information Technology</td><td>PASS</td><td>OU=Information Technology,OU=Users,OU=Northstar,DC=ad,DC=northstar,DC=test</td></tr>
+<tr><td>Group</td><td>GG_Finance_Users</td><td>PASS</td><td>Expected Global Security group</td></tr>
+<tr><td>Group</td><td>GG_HR_Users</td><td>PASS</td><td>Expected Global Security group</td></tr>
+<tr><td>Group</td><td>GG_IT_Users</td><td>PASS</td><td>Expected Global Security group</td></tr>
+<tr><td>Group</td><td>DL_Finance_Share_RW</td><td>PASS</td><td>Expected DomainLocal Security group</td></tr>
+<tr><td>Group</td><td>DL_HR_Share_RW</td><td>PASS</td><td>Expected DomainLocal Security group</td></tr>
+<tr><td>Group</td><td>DL_Helpdesk_ResetPassword</td><td>PASS</td><td>Expected DomainLocal Security group</td></tr>
+<tr><td>User</td><td>amorgan</td><td>PASS</td><td>Finance / Financial Analyst</td></tr>
+<tr><td>Membership</td><td>amorgan -&gt; GG_Finance_Users</td><td>PASS</td><td>Direct role-group membership</td></tr>
+<tr><td>User</td><td>jpatel</td><td>PASS</td><td>Finance / Senior Accountant</td></tr>
+<tr><td>Membership</td><td>jpatel -&gt; GG_Finance_Users</td><td>PASS</td><td>Direct role-group membership</td></tr>
+<tr><td>User</td><td>rlee</td><td>PASS</td><td>Human Resources / HR Specialist</td></tr>
+<tr><td>Membership</td><td>rlee -&gt; GG_HR_Users</td><td>PASS</td><td>Direct role-group membership</td></tr>
+<tr><td>User</td><td>tnguyen</td><td>PASS</td><td>Human Resources / Recruiter</td></tr>
+<tr><td>Membership</td><td>tnguyen -&gt; GG_HR_Users</td><td>PASS</td><td>Direct role-group membership</td></tr>
+<tr><td>User</td><td>cjohnson</td><td>PASS</td><td>Information Technology / Systems Administrator</td></tr>
+<tr><td>Membership</td><td>cjohnson -&gt; GG_IT_Users</td><td>PASS</td><td>Direct role-group membership</td></tr>
+<tr><td>User</td><td>srivera</td><td>PASS</td><td>Information Technology / Help Desk Technician</td></tr>
+<tr><td>Membership</td><td>srivera -&gt; GG_IT_Users</td><td>PASS</td><td>Direct role-group membership</td></tr>
+<tr><td>AGDLP Nesting</td><td>GG_Finance_Users -&gt; DL_Finance_Share_RW</td><td>PASS</td><td>Global role group nested in domain-local resource group</td></tr>
+<tr><td>AGDLP Nesting</td><td>GG_HR_Users -&gt; DL_HR_Share_RW</td><td>PASS</td><td>Global role group nested in domain-local resource group</td></tr>
+<tr><td>AGDLP Nesting</td><td>GG_IT_Users -&gt; DL_Helpdesk_ResetPassword</td><td>PASS</td><td>Global role group nested in domain-local resource group</td></tr>
+<tr><td>Group Policy</td><td>Northstar - Workstation Security Baseline</td><td>PASS</td><td>Workstation security baseline exists</td></tr>
+<tr><td>Group Policy</td><td>Workstation baseline link</td><td>PASS</td><td>OU=Workstations,OU=Northstar,DC=ad,DC=northstar,DC=test</td></tr>
+</table>
+</body></html>

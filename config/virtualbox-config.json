@@ -1,0 +1,30 @@
+{
+  "LabName": "Northstar-AD-Lab",
+  "VBoxManagePath": "C:\\Program Files\\Oracle\\VirtualBox\\VBoxManage.exe",
+  "VmBaseFolder": "VirtualBox VMs\\Northstar-AD-Lab",
+  "HostOnlyAdapter": "VirtualBox Host-Only Ethernet Adapter",
+  "Network": {
+    "Subnet": "192.168.56.0/24",
+    "HostAddress": "192.168.56.1",
+    "DomainControllerAddress": "192.168.56.10",
+    "ClientAddress": "192.168.56.20",
+    "PrefixLength": 24
+  },
+  "DomainController": {
+    "Name": "NS-DC01",
+    "OsType": "Windows2025_64",
+    "MemoryMB": 4096,
+    "Cpus": 2,
+    "DiskMB": 81920,
+    "IsoFile": "Windows_Server_2025_EVAL_x64_en-us.iso"
+  },
+  "Client": {
+    "Name": "NS-WIN11-01",
+    "OsType": "Windows11_64",
+    "MemoryMB": 4096,
+    "Cpus": 2,
+    "DiskMB": 81920,
+    "IsoFile": "Windows_11_Enterprise_EVAL_25H2_x64_en-us.iso"
+  }
+}
+

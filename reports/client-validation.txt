@@ -1,0 +1,10 @@
+﻿
+Name        Domain            PartOfDomain
+----        ------            ------------
+NS-WIN11-01 ad.northstar.test         True
+
+
+HostOnlyDNS: 192.168.56.10
+PolicyRefresh: PASS
+WorkstationBaselineGPO: PASS
+InactivityTimeoutSecs: 900
